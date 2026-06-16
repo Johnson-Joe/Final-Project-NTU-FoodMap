@@ -253,17 +253,29 @@ private struct AIAssistantContentView: View {
         !question.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
+//    private var restaurantContext: String {
+//        restaurants.map { restaurant in
+//            """
+//            店名：\(restaurant.name)
+//            地區：\(restaurant.area.rawValue)
+//            分類：\(restaurant.categoryText)
+//            價格：\(restaurant.priceRange)
+//            地址：\(restaurant.address)
+//            營業時間：\(restaurant.openingHours)
+//            介紹：\(restaurant.description)
+//            學生評論：\(restaurant.studentComments.joined(separator: "；"))
+//            """
+//        }
+//        .joined(separator: "\n\n")
+//    }
     private var restaurantContext: String {
-        restaurants.map { restaurant in
+        restaurants.prefix(30).map { restaurant in
             """
             店名：\(restaurant.name)
             地區：\(restaurant.area.rawValue)
             分類：\(restaurant.categoryText)
             價格：\(restaurant.priceRange)
-            地址：\(restaurant.address)
-            營業時間：\(restaurant.openingHours)
-            介紹：\(restaurant.description)
-            學生評論：\(restaurant.studentComments.joined(separator: "；"))
+            簡介：\(restaurant.description)
             """
         }
         .joined(separator: "\n\n")
@@ -301,6 +313,7 @@ private struct AIAssistantContentView: View {
             }
         }
     }
+
 
     private var instructions: String {
         """
